@@ -1,4 +1,10 @@
 # 📚 SISTEM MANAJEMEN PERPUSTAKAAN
+```
+UAS Pemrograman Berbasis Framework
+NIM    : 230202027
+Nama   : Ana Febri Salusi
+Kelas  : TI-2B
+```
 
 ## 🚀 A. Backend
 ### Git Clone
@@ -12,9 +18,13 @@ composer install
 ```
 
 ### 🗄️ Import Database
-```
-db_perpus_230202027
-```
+1. Buka phpMyAdmin
+2. Buat database:  
+   ```
+   db_perpus_230202027
+   ```
+3. Import file SQL dari folder `uas_pbf_soal_b/database/`
+
 ### ⚙️ Ubah .env
 ```
 database.default.hostname = localhost
@@ -27,33 +37,43 @@ database.default.password =
 ```
 php artisan serve
 ```
-### 🔌 Postman
-```
-1. uas_buku
-- GET :http://localhost:8080/buku
-- POST : http://localhost:8080/buku
-- PUT : http://localhost:8080/buku/{id}
-- DELETE : http://localhost:8080/buku/{id}
 
-2. uas_peminjaman
-- GET :http://localhost:8080/peminjaman
-- POST : http://localhost:8080/peminjaman
-- PUT : http://localhost:8080/peminjaman/{id}
-- DELETE : http://localhost:8080/peminjaman/{id}
-```
+### 🔌 API Endpoint (Postman)
+#### 📘 1. uas_buku
+
+| Method | Endpoint                          | Deskripsi             |
+|--------|-----------------------------------|-----------------------|
+| GET    | http://localhost:8080/buku        | Menampilkan semua buku |
+| POST   | http://localhost:8080/buku        | Menambahkan buku baru  |
+| PUT    | http://localhost:8080/buku/{id}   | Mengubah data buku     |
+| DELETE | http://localhost:8080/buku/{id}   | Menghapus buku         |
+
+---
+
+#### 📗 2. uas_peminjaman
+
+| Method | Endpoint                                 | Deskripsi                    |
+|--------|------------------------------------------|------------------------------|
+| GET    | http://localhost:8080/peminjaman         | Menampilkan semua peminjaman |
+| POST   | http://localhost:8080/peminjaman         | Menambahkan data peminjaman  |
+| PUT    | http://localhost:8080/peminjaman/{id}    | Mengubah data peminjaman     |
+| DELETE | http://localhost:8080/peminjaman/{id}    | Menghapus data peminjaman    |
+
+
 ## 🎨 B. Frontend
 ### 🛠️ Install Laravel
-```
+```bash
 composer create-project laravel/laravel frontend-uas-230202027 "10.0"
 cd frontend-uas-230202027
 ```
-### Buat Controller
-```
-Buku
-Peminjaman
+
+### ✨ Buat Controller
+```bash
+php artisan make:controller Buku
+php artisan make:controller Peminjaman
 ```
 
-### Tambahkan Route
+### 🌐 Tambahkan Route di `routes/web.php`
 ```
 <?php
 
@@ -76,9 +96,13 @@ Route::get('/peminjaman', [Peminjaman::class, 'index']);
     Route::delete('/peminjaman/{id}', [Peminjaman::class, 'destroy']);
 ```
 ### ▶️ Jalankan Laravel
-```
+```bash
 php artisan serve
 ```
+Akses di: [http://localhost:8000](http://localhost:8000)
+
+---
+
 
 ### 📂 Struktur Directori
 ```
